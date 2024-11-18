@@ -6,7 +6,7 @@ const router = (0, express_1.Router)();
 // GET route to get a greeting
 router.post('/', (req, res) => {
     if (!req.body.user || !req.body.todo) {
-        res.status(400).json({ message: "Could not add todo" });
+        res.status(400).json(`Could not add todo.`);
         return;
     }
     // Parse the request
@@ -15,6 +15,6 @@ router.post('/', (req, res) => {
     // Add todo to the "database"
     app_1.database.add(name, todo);
     // Send the response
-    res.json(`/Todo successfully added for user ${name}./i`);
+    res.json(`Todo successfully added for user ${name}.`);
 });
 exports.default = router;

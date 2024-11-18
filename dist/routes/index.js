@@ -5,8 +5,10 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 const express_1 = require("express");
 const add_1 = __importDefault(require("./add"));
+const todos_1 = __importDefault(require("./todos"));
 // Create router
 const router = (0, express_1.Router)();
 // Add routes
 router.use('/add', add_1.default);
+router.use('/todos', todos_1.default);
 exports.default = router;

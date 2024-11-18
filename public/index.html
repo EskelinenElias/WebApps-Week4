@@ -8,6 +8,9 @@
   <link rel="stylesheet" type="text/css" href="./stylesheets/styles.css">
 </head>
 <body>
+  <header>
+    <h1>Welcome to ToDo app!<h1>
+  </header>
   <main>
     <div class="container" id="form-container">
       <h1>Add ToDo</h1>
@@ -19,6 +22,15 @@
         <button type="submit" id="submit-data">Add</button>
       </form> 
       <p id="status"></p>
+    </div>
+    <div class="container" id="list-container">
+      <h1>Check ToDos</h1>
+      <form id="searchForm">
+        <input type="text" id="searchInput" name="searchTerm"/>
+        <button type="submit" id="search">Search</button>
+      </form>
+      <ul id="todoList">
+      </ul>
     </div>
   </main>
 </body>
