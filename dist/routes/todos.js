@@ -10,8 +10,7 @@ router.get('/:id', async (req, res) => {
     console.log(`Searching for user ${id}`);
     // Get todos for the id
     const todos = app_1.database.getTodos(id);
-    console.log("GET todos", todos);
     // Send the response
-    res.json({ todos: todos });
+    res.json("User not found.");
 });
 exports.default = router;
