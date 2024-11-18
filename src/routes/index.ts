@@ -1,8 +1,10 @@
 import { Router, Request, Response } from 'express';
 import addRoutes from "./add";
 
+// Create router
 const router = Router();
 
-router.use('/', addRoutes); 
+// Add routes
+router.use('/add', addRoutes); 
 
 export default router; 

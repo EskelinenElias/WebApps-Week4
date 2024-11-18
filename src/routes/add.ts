@@ -5,7 +5,7 @@ const router = Router();
 
 // GET route to get a greeting
 router.post('/', (req: Request, res: Response) => {
-  if (!req.body.name || !req.body.todos) {
+  if (!req.body.user || !req.body.todos) {
     res.status(400).json({ message: "Could not add todo" }); 
     return;
   }

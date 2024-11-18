@@ -9,14 +9,16 @@
 </head>
 <body>
   <main>
-    <h1>Add ToDo</h1>
-    <form id="todoForm">
-      <label for="name">User input:</label>
-      <input type="text" id="userInput" name="userInput" required />
-      <label for="email">ToDo input:</label>
-      <input type="tect" id="email" name="email" required />
-      <button type="submit">Add user</button>
-    </form> 
+    <div class="container" id="form-container">
+      <h1>Add ToDo</h1>
+      <form id="todoForm">
+        <label for="userInput">User input:</label>
+        <input type="text" id="userInput" name="user"/>
+        <label for="todoInput">ToDo input:</label>
+        <input type="text" id="todoInput" name="todos"/>
+        <button type="submit" id="submit-data">Add</button>
+      </form> 
+    </div>
   </main>
 </body>
 </html>
