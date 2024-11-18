@@ -15,6 +15,6 @@ router.post('/', (req, res) => {
     // Add todo to the "database"
     app_1.database.add(name, todos);
     // Send the response
-    res.send(`Todo successfully added for user ${name}.`);
+    res.send(`/Todo successfully added for user ${name}./i`);
 });
 exports.default = router;
