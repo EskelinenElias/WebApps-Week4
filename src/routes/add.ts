@@ -10,7 +10,7 @@ router.post('/', (req: Request, res: Response) => {
     return;
   }
   // Parse the request
-  const name = req.body.name;
+  const name = req.body.user;
   const todos = req.body.todos;
   // Add todo to the "database"
   database.add(name, todos);
