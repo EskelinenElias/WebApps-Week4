@@ -5,17 +5,17 @@ const router = Router();
 
 // GET route to get a greeting
 router.post('/', (req: Request, res: Response) => {
-  if (!req.body.user || !req.body.todos) {
+  if (!req.body.user || !req.body.todo) {
     res.status(400).json({ message: "Could not add todo" }); 
     return;
   }
   // Parse the request
-  const name = req.body.user;
-  const todos = req.body.todos;
+  const name: string = req.body.user;
+  const todo: string = req.body.todo;
   // Add todo to the "database"
-  database.add(name, todos);
+  database.add(name, todo);
   // Send the response
-  res.send(`/Todo successfully added for user ${name}./i`);
+  res.json(`/Todo successfully added for user ${name}./i`);
 });
 
 export default router; 

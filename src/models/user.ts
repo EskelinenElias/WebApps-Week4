@@ -1,6 +1,6 @@
 type TUser = {
-  name: string, 
-  todos: string[]
+  name: string; 
+  todos: string[];
 }
 
 export { TUser };

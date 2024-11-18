@@ -19,17 +19,18 @@ class Database {
     return null; 
   }
   
-  add(name: string, todos: string[]) {
+  add(name: string, todo: string) {
     if (!name) { return; }
     // Check if the user exists
     this.users.forEach(user => { 
       if (user.name == name) {
         // Add todos to existing user
-        user.todos.push(...todos);
+        user.todos.push(todo);
         return; 
       }
     });
     // Add new user
+    const todos: string[] = [todo]; 
     const user: TUser = { name, todos }; 
     this.users.push(user);
   }

@@ -19,7 +19,7 @@ class Database {
         });
         return null;
     }
-    add(name, todos) {
+    add(name, todo) {
         if (!name) {
             return;
         }
@@ -27,11 +27,12 @@ class Database {
         this.users.forEach(user => {
             if (user.name == name) {
                 // Add todos to existing user
-                user.todos.push(...todos);
+                user.todos.push(todo);
                 return;
             }
         });
         // Add new user
+        const todos = [todo];
         const user = { name, todos };
         this.users.push(user);
     }
