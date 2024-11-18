@@ -1,0 +1,108 @@
+html, body {
+    height: 100%; 
+    margin: 0; 
+}
+
+body {
+    height: 100vh;
+    width: 100vw; 
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    color: white;
+    background: linear-gradient(135deg, #8e44ad, #3498db);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+main {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: row;
+    width: 100%; 
+    height: 100%; 
+}
+
+.container {
+    display: flex; 
+    flex-direction: column;
+    align-items: center; 
+    box-sizing: border-box;
+    width: 100%; 
+    height: 70%; 
+    background-color: rgba(255, 255, 255, 0.2);
+    border: 1.5px solid white; 
+    border-radius: 20px;
+    padding: 40px 40px 40px 40px; 
+    margin-top: 20%; 
+    margin-bottom: 20%; 
+}
+
+.container h1 {
+    margin: 0 0 40px 0; 
+    padding: 0; 
+}
+
+#container-right {
+    margin-left: 5%; 
+    margin-right: 10%
+}
+
+#container-left {
+    margin-left: 10%; 
+    margin-right: 5%
+}
+
+/* Styling for the user form */
+
+#userForm {
+    display: flex; 
+    flex-direction: column; 
+    align-items: center; 
+    position: relative; 
+    padding: 0px; 
+    margin: 0px; 
+    width: 100%; 
+    flex-grow: 1; 
+    box-sizing: border-box;
+}
+
+#userForm label {
+    margin-bottom: 10px; 
+    width: 100%; 
+}
+
+#userForm input{
+    box-sizing: border-box;
+    background-color: rgba(255, 255, 255, 0.6); 
+    margin: 5px; 
+    border-radius: 5px; 
+    border: none; 
+    width: 100%; 
+    padding: 10px 5px 10px 5px; 
+    margin-bottom: 20px; 
+}
+
+#userForm button {
+    margin: auto auto 0 0;     
+}
+
+#responseMessage {
+    margin: 20px; 
+}
+
+/* Styling for the registered users list */ 
+
+#userList {
+    flex-grow: 1;
+    width: 100%; 
+    overflow-y: auto;
+}
+
+#userList li {
+    margin-bottom: 10px; 
+}
+
+#getUsers {
+    margin: auto auto 0 0; 
+}

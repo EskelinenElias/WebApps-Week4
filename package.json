@@ -1,0 +1,19 @@
+{
+  "name": "advanced-web-apps-week-4",
+  "version": "1.0.0",
+  "main": "./src/index.ts",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "tsc-watch --onSuccess \"nodemon ./dist/index.js\"",
+    "start": "node ./dist/index.js"
+  },
+  "author": "Elias Eskelinen",
+  "license": "ISC",
+  "description": "Weekly exercises for week 4 of LUT University course Advanced Web Applications, fall 2024.",
+  "dependencies": {
+    "@types/express": "^5.0.0",
+    "@types/morgan": "^1.9.9",
+    "express": "^4.21.1",
+    "morgan": "^1.10.0"
+  }
+}
