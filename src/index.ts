@@ -8,3 +8,8 @@ const port: number = 3000
 app.listen(port, () => { 
   console.log(`Server running at http://${host}:${port}/`)
 })
+
+type TUser = {
+  name: string; 
+  todos: string[];
+}
