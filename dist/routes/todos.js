@@ -11,6 +11,11 @@ router.get('/:id', async (req, res) => {
     // Get todos for the id
     const todos = app_1.database.getTodos(id);
     // Send the response
-    res.json("User not found.");
+    if (todos) {
+        res.json({ todos: todos });
+    }
+    else {
+        res.json("User not found.");
+    }
 });
 exports.default = router;
