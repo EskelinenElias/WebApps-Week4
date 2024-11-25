@@ -22,6 +22,49 @@ async function getTodos(user) {
   }
 }
 
+// Function to display todos on the page
+function displayTodos(name, todos) {
+  // Clear ToDo list
+  const todoList = document.getElementById("todoList"); 
+  todoList.innerHTML = ""; 
+  // Add each ToDo to the list
+  todos.forEach(todo => {
+    // Create new list item
+    const listItem = document.createElement('li');
+    listItem.textContent = `${todo}`;
+    // Add delete button
+    const deleteLink = document.createElement("a");
+    deleteLink.textContent = "Delete";
+    deleteLink.href = "#";
+    deleteLink.classList.add("delete-task");
+    // Delete ToDo if the delete button is clicked
+    deleteLink.addEventListener("click", () => {
+      // Delete ToDo
+      deleteTodo(name, todo)
+      // Update Todo list
+      updateTodos(name)
+    }); 
+    // Add delete button to the list item
+    listItem.appendChild(deleteLink); 
+    // Add item to the list
+    todoList.appendChild(listItem);
+  }); 
+}
+
+// Function to update ToDo list
+async function updateTodos(name) {
+  // Send POST request
+  const response = await getTodos(name);
+  console.log(response) 
+  if (!response.todos) { 
+    console.log(`No todos for user ${name}.`)
+    return; 
+  }
+  const todos = response.todos; 
+  // List todos
+  displayTodos(name, todos); 
+}
+
 async function deleteUser(user) {
   // Send DELETE request
   const response = await fetch('/delete', {
@@ -30,6 +73,22 @@ async function deleteUser(user) {
     body: JSON.stringify({ user })
   });
   return response.json();
+}
+
+// Function to delete a todo from a user
+async function deleteTodo(name, todo) {
+  // Delete todo
+  fetch('/update', {
+    method: 'PUT',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({ name, todo })
+  }).then((response) => {
+    return response.json();
+  }).then((data) => {
+    console.log(`Successfully deleted todo ${todo} of user ${name}`, data.body);
+  }).catch((error) => {
+    console.error(`Error occurred while attempting to delete ${todo} of user ${name}`, error);
+  })
 }
 
 // Add new todo when form is submitted
@@ -60,22 +119,8 @@ document.getElementById('searchForm').addEventListener('submit', async (event) =
     console.error("Could not get todos"); 
     return; 
   }
-  // Send POST request
-  const response = await getTodos(user);
-  console.log(response) 
-  if (!response.todos) { 
-    console.log(`No todos for user ${user}.`)
-    return; 
-  }
-  const todos = response.todos; 
-  // List todos
-  const todoList = document.getElementById("todoList"); 
-  todoList.innerHTML = ''; 
-  todos.forEach(todo => {
-    const listItem = document.createElement('li');
-    listItem.textContent = `${todo}`;
-    todoList.appendChild(listItem);
-  }); 
+  // Update todo list
+  updateTodos(user); 
 }); 
 
 // Delete user if delete button is pressed
