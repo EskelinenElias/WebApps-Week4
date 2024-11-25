@@ -18,6 +18,7 @@ app.use('/', routes_1.default);
 // Serve static files from 'public'
 app.use(express_1.default.static(path_1.default.join(__dirname, '../public')));
 // Add "database"
-const database = new database_1.Database();
+const dataPath = "../data.json";
+const database = new database_1.Database(dataPath);
 exports.database = database;
 exports.default = app;
