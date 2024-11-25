@@ -22,6 +22,16 @@ async function getTodos(user) {
   }
 }
 
+async function deleteUser(user) {
+  // Send DELETE request
+  const response = await fetch('/delete', {
+    method: 'DELETE',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({ user })
+  });
+  return response.json();
+}
+
 // Add new todo when form is submitted
 document.getElementById('todoForm').addEventListener('submit', async (event) => {
   event.preventDefault();
@@ -66,4 +76,22 @@ document.getElementById('searchForm').addEventListener('submit', async (event) =
     listItem.textContent = `${todo}`;
     todoList.appendChild(listItem);
   }); 
+}); 
+
+// Delete user if delete button is pressed
+document.getElementById("deleteUser").addEventListener("click", async () => {
+  // Get user 
+  const user = document.getElementById('searchInput').value;
+  // Delete user
+  fetch('/delete', {
+    method: 'DELETE',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({ user })
+  }).then((response) => {
+    return response.json();
+  }).then((data) => {
+    console.log(`Successfully deleted user ${user}`, data.body);
+  }).catch((error) => {
+    console.error(`Error occurred while attempting to delete user ${user}`, error);
+  })
 }); 

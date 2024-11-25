@@ -13,7 +13,7 @@ router.post('/', (req, res) => {
     const name = req.body.user;
     const todo = req.body.todo;
     // Add todo to the "database"
-    app_1.database.add(name, todo);
+    app_1.database.addTodo(name, todo);
     // Send the response
     res.json(`Todo added successfully for user ${name}.`);
 });

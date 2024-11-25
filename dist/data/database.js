@@ -19,24 +19,47 @@ class Database {
         // User not found
         return null;
     }
-    add(name, todo) {
+    addUser(name, todos) {
         if (!name) {
             return;
         }
-        console.log("Adding:", name, todo);
+        // Check if the user already exists
+        const user = this.users.find(user => user.name === name);
+        if (user) {
+            // User found
+            user.todos.push(...todos);
+            return;
+        }
+        // User not found; add new user
+        const newUser = { name: name, todos: todos };
+        this.users.push(newUser);
+    }
+    addTodo(name, todo) {
+        if (!name) {
+            return;
+        }
         // Check if the user exists
-        this.users.forEach(user => {
-            if (user.name == name) {
-                // Add todos to existing user
-                user.todos.push(todo);
-                console.log("Todos: ", user.todos);
-                return;
-            }
-        });
-        // Add new user
+        const user = this.users.find(user => user.name === name);
+        if (user) {
+            // User found
+            user.todos.push(todo);
+            return;
+        }
+        // User not found; add new user
         const todos = [todo];
-        const user = { name: name, todos: todos };
-        this.users.push(user);
+        const newUser = { name: name, todos: todos };
+        this.users.push(newUser);
+    }
+    deleteUser(name) {
+        // Check if the user exists
+        const index = this.users.findIndex(user => user.name === name);
+        if (index !== -1) {
+            // User found; delete user
+            this.users.splice(index, 1);
+            return true;
+        }
+        // User not found
+        return false;
     }
 }
 exports.Database = Database;
