@@ -17,7 +17,7 @@ app.use('/', router)
 app.use(express.static(path.join(__dirname, '../public')))
 
 // Add "database"
-const dataPath = "../data.json"; 
+const dataPath = "./data.json"; 
 const database: Database = new Database(dataPath); 
 
 export default app; 
